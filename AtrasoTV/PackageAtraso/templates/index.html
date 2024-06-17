@@ -1,0 +1,40 @@
+{% extends 'estrutura.html' %}
+
+{% block body %}
+
+<div class="table-responsive grid text-center table-container" style="padding: 0 5px 0 20px;">
+    <table class="table table-secundary table-striped table-bordered border-dark" id="tabela">
+        <thead class="table-primary table-bordered border-dark">
+            <tr>
+                <th scope="col">ID</th>
+                {% for column in dataframe.keys() %}
+                    {% if column != 'QUANT. TOTAL' and column != 'ENTREGUE' and column != 'HORA' and column != 'ID' %}
+                        <th scope="col">{{ column }}</th>
+                    {% endif %}
+                {% endfor %}
+                <th scope="col">F.</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(tamanho_df) %}
+                {% if i == 0 %}
+                    <tr>
+                {% else %}
+                    <tr>
+                {% endif %}
+                    {% if (dataframe['QUANT. TOTAL'][i] - dataframe['ENTREGUE'][i]) != 0 %}
+                        <td scope="row" class="align-middle"><strong> {{ i + 1 }}º </strong></td>
+                        {% for column in dataframe.keys() %}
+                            {% if column != null and column != 'QUANT. TOTAL' and column != 'ENTREGUE' and column != 'HORA' and column != 'ID' %}
+                                <td scope="row" class="align-middle"><strong> {{ dataframe[column][i] }} </strong></td>
+                            {% endif %}
+                        {% endfor %}
+                        <td scope="row" class="align-middle"><strong> {{ dataframe['QUANT. TOTAL'][i] - dataframe['ENTREGUE'][i] }} </strong></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

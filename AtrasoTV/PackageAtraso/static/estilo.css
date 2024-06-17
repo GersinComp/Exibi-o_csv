@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 7.5rem;
+}
+
+.table-container {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 925px; /* Defina uma altura máxima para a tabela */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    font-size: 4.5rem;
+    line-height: 1; /* Define a altura da linha como 1 para remover espaços extras */
+    max-height: 10px;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.fixar {
+    position: sticky;
+    top: 5rem;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+}
